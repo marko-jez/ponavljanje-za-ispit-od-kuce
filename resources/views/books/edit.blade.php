@@ -1,13 +1,9 @@
+@extends('layouts.app')
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Uredi knjigu</title>
-</head>
-<body>
+@section('title', 'Uredi knjigu')
+
+@section('content')
+
   @auth
     <form action="{{route('books.update', $book->id)}}" method="POST">
       @csrf
@@ -41,5 +37,5 @@
   @else
     <p>Molimo prijavite se za uređivanje</p> 
   @endauth
-</body>
-</html>
+
+@endsection

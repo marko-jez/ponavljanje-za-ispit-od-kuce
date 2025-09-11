@@ -1,12 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Sve knjige</title>
-</head>
-<body>
+@extends('layouts.app')
+
+@section('title', 'Sve knjige')
+
+@section('content')
+
   <h2>Lista svih knjiga korisnika <strong>{{$user->name}}</strong></h2>
 
   <ul>
@@ -15,11 +12,19 @@
         <form action="{{route('books.destroy', $book->id)}}" method="POST">
           @csrf
           @method('DELETE')
-          <button type="submit">Obriši knjigu</button>
+          <button type="submit" class="btn btn-outline-primary" >Obriši knjigu</button>
         </form> 
-        <a href="{{route('books.show', $book->id)}}" style="color:blue">Detalji o knjizi</a>
+        <br>
+        <a href="{{route('books.show', $book->id)}}" style="color:blue" class="btn btn-outline-primary" >Detalji o knjizi</a>
         <hr>
       </li>
+      @if ($profile)
+          <h3>Podaci o korisniku</h3>
+        <p style="font-style: italic">Korisnik: {{$user->name}}</p>
+        <p style="font-style: italic">Username: {{$profile->username}}</p>
+        <p style="font-style: italic">Adresa: {{$profile->address}}</p>
+        <p style="font-style: italic">Broj mobitela: {{$profile->phone}}</p>
+      @endif
     @empty
       <p>Korisnik nema niti jednu knjigu</p>
     @endforelse
@@ -28,5 +33,7 @@
   <br><br>
 
   <a href="{{route('books.create')}}" style="color:green">Dodaj novu knjigu</a>
-</body>
-</html>
+  <br>
+  <a href="{{route('login')}}">Početna</a>
+
+@endsection  

@@ -26,5 +26,10 @@ class DatabaseSeeder extends Seeder
             'title' => 'Preobraženje',
             'year' => 2000
         ]);
-    }
+    $this->call([
+        UserSeeder::class   
+    ]);
+
+}
+   
 }

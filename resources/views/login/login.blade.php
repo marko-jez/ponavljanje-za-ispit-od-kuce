@@ -1,23 +1,19 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Login</title>
-</head>
-<body>
+@extends('layouts.app')
+
+@section('title', 'Prijava korisnika')
+
+@section('content')
 
   @auth
   <div>
     <p>Dobrodošli, {{ auth()->user()->name }}!</p>
     <form method="POST" action="{{route('logout')}}">
         @csrf
-        <button type="submit">Odjava</button>
+        <button type="submit" class="btn btn-primary">Odjava</button>
     </form>
   </div> 
   <br><br>
-    <a href="{{route('books.index')}}" style="color:blue">Sve knjige</a>
+    <a href="{{route('books.index')}}" style="color:white" class="btn btn-info" >Sve knjige</a>
   @else
     <h1>Dobrodošli, molimo vas da se prijavite za nastavak</h1>
     <br>
@@ -40,9 +36,8 @@
       @error('password')
         <p style="color:red">{{$message}}</p>     
       @enderror
-      <button type="submit">Prijavi se</button>
+      <button type="submit" class="btn btn-primary">Prijavi se</button>
     </form>
   @endauth
 
-</body>
-</html>
+@endsection  

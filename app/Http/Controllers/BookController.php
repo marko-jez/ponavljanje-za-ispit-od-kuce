@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Book;
+use App\Models\Profile;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -13,9 +14,11 @@ class BookController extends Controller
      */
     public function index()
     {
-        $books = Book::all();
+        // $books = Book::all(); da se sve prikazu knjige
         $user = Auth::user();
-        return view('books.index', compact('books', 'user'));
+        $books = $user->books;
+        $profile = $user->profile;
+        return view('books.index', compact('books', 'user', 'profile'));
     }
 
     /**

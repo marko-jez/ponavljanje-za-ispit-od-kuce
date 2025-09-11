@@ -13,3 +13,4 @@ Route::post('obrada', [AuthController::class, 'process'])->name('process');
 Route::post('logout', [AuthController::class, 'logout'])->name('logout');
 
 Route::resource('books', BookController::class);
+
